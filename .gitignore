@@ -1,0 +1,110 @@
+# ========================================
+# Python / FastAPI Project .gitignore
+# ========================================
+
+# --- Byte-compiled / optimized / DLL files ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- C extensions ---
+*.so
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+*.env
+*.venv
+Pipfile.lock
+poetry.lock
+
+# --- FastAPI / Uvicorn logs ---
+*.log
+*.db
+*.sqlite3
+
+# --- IDE / Editor files ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Testing / coverage ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# --- Distribution / packaging ---
+build/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- MyPy / Pylint / Pyright ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# --- Jupyter / Notebooks ---
+.ipynb_checkpoints
+*.ipynb
+
+# --- Temporary or local config files ---
+*.local
+*.bak
+*.tmp
+*.old
+
+# --- Node / Frontend assets (if using FastAPI + React/Vue) ---
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# --- Docker / Compose ---
+*.pid
+*.sock
+*.tar
+*.pid.lock
+*.pidfile
+docker-compose.override.yml
+
+# --- Env files ---
+.env
+.env.*
+!.env.example
+
+# --- Editor-specific ---
+.vscode/
+.idea/
+*.iml
+
+# --- PyInstaller ---
+*.manifest
+*.spec
+
+# --- Static and media (if served locally) ---
+media/
+staticfiles/
+uploads/
