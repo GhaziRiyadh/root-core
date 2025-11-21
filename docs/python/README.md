@@ -175,11 +175,11 @@ All models should inherit from `BaseModel` to get soft-delete support:
 from core.database import BaseModel
 
 class MyModel(BaseModel, table=True):
-    # Automatically includes:
-    # - id: int (primary key)
-    # - is_deleted: bool (soft delete flag)
-    # - created_at: datetime (optional)
-    # - updated_at: datetime (optional)
+    # Inherited fields (automatically included):
+    # - id: Optional[int] - Primary key
+    # - is_deleted: bool - Soft delete flag
+    # Note: created_at and updated_at are commented out by default in BaseModel
+    #       Uncomment them in core/database.py if you need timestamp tracking
     
     name: str
     # ... your fields

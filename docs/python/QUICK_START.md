@@ -20,7 +20,7 @@ from src.core.database import BaseModel
 from src.core.bases.base_router import BaseRouter
 ```
 
-**Full solution guide**: See [docs/python/FIXING_IMPORTS.md](FIXING_IMPORTS.md)
+**Full solution guide**: See [FIXING_IMPORTS.md](FIXING_IMPORTS.md)
 
 ## Installation
 

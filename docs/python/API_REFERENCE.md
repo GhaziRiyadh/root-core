@@ -26,6 +26,8 @@ class MyModel(BaseModel, table=True):
 **Inherited Fields**:
 - `id: Optional[int]` - Auto-incrementing primary key
 - `is_deleted: bool` - Soft delete flag (default: False)
+- `created_at: datetime` - Timestamp fields (commented out by default, uncomment in database.py if needed)
+- `updated_at: datetime` - Update timestamp (commented out by default)
 
 #### get_session()
 
