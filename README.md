@@ -53,7 +53,7 @@ Located in the `/RootCore` directory. This is a C# class library built on ASP.NE
 
 | Feature | Python (FastAPI) | ASP.NET Core |
 |---------|------------------|--------------|
-| Language | Python 3.13+ | C# / .NET 8.0+ |
+| Language | Python 3.13+ | C# / .NET 10.0+ |
 | Database ORM | SQLModel/SQLAlchemy | Entity Framework Core |
 | Web Framework | FastAPI | ASP.NET Core |
 | Type Safety | Optional (with type hints) | Strong typing |

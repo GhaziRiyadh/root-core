@@ -257,7 +257,7 @@ Key differences from the Python version:
 
 ## Requirements
 
-- .NET 8.0 or later
+- .NET 10.0 or compatible
 - Entity Framework Core
 - Microsoft.AspNetCore.Mvc.Core
 - Microsoft.AspNetCore.Authentication.JwtBearer
