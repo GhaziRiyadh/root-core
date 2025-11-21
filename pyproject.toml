@@ -1,6 +1,6 @@
 [project]
-name = "root-core"
-version = "0.1.4"
+name = "core"
+version = "0.1.0"
 description = "This is the core package for root projects."
 authors = [{ name = "Ghaziriyadh", email = "ghazriyadh2@gmail.com" }]
 readme = "README.md"
@@ -12,7 +12,7 @@ Homepage = "https://github.com/GhaziRiyadh/root-core"
 Issues = "https://github.com/GhaziRiyadh/root-core/issues"
 
 [tool.poetry]
-packages = [{ include = "root_core", from = "src" }]
+packages = [{ include = "core", from = "." }]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
