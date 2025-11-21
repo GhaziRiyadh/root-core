@@ -29,7 +29,7 @@ Located in the `/core` directory. This is a Python library built on FastAPI and 
 - SQLModel
 - SQLAlchemy
 
-[See Python Documentation](./core/)
+📖 **[Complete Python Documentation](./docs/python/)** - Installation, guides, API reference, and troubleshooting
 
 ### ASP.NET Core Version
 Located in the `/RootCore` directory. This is a C# class library built on ASP.NET Core and Entity Framework Core.
