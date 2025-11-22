@@ -108,3 +108,108 @@ docker-compose.override.yml
 media/
 staticfiles/
 uploads/
+
+# ========================================
+# .NET / ASP.NET Core Project .gitignore
+# ========================================
+
+# --- Build results ---
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# --- User-specific files ---
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- Visual Studio / Rider ---
+.vs/
+.vscode/
+.idea/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- Build Results ---
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# --- .NET Core ---
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# --- NuGet ---
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+# --- Test Results ---
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# --- .NET Code Coverage ---
+*.coverage
+*.coveragexml
+
+# --- ReSharper ---
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# --- JetBrains Rider ---
+.idea/
+*.sln.iml
+
+# --- User-specific files (MonoDevelop/Xamarin Studio) ---
+*.userprefs
+
+# --- Mono auto generated files ---
+mono_crash.*
+
+# --- Mac bundle stuff ---
+*.dmg
+*.app
+
+# --- Windows image file caches ---
+Thumbs.db
+ehthumbs.db
+
+# --- Folder config file ---
+Desktop.ini
+
+# --- Recycle Bin used on file shares ---
+$RECYCLE.BIN/
+
+# --- VS Code directories ---
+.vscode/
+
+# --- Windows Installer files ---
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# --- Windows shortcuts ---
+*.lnk
+
