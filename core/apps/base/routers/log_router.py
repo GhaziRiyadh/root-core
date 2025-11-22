@@ -1,10 +1,10 @@
 """Log router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.base.services.log_service import LogService
-from src.core.apps.base.repositories.log_repository import LogRepository
-from src.core.apps.base.schemas.log import LogCreate, LogUpdate
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.base.services.log_service import LogService
+from core.apps.base.repositories.log_repository import LogRepository
+from core.apps.base.schemas.log import LogCreate, LogUpdate
 
 resource_name: str = "logs"
 

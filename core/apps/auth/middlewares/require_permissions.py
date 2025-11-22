@@ -5,7 +5,7 @@ import asyncio
 from fastapi import HTTPException, status
 
 
-from src.core.config import PermissionAction
+from core.config import PermissionAction
 
 
 def _to_action_str(action: Any) -> str:

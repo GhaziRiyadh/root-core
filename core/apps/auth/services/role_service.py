@@ -3,10 +3,10 @@
 from typing import Any, Dict, List, Type
 
 from sqlmodel import SQLModel
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.role_repository import RoleRepository
-from src.core.apps.auth.models.role import Role
-from src.core.schemas.fields import (
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.role_repository import RoleRepository
+from core.apps.auth.models.role import Role
+from core.schemas.fields import (
     DynamicFormConfig,
     FieldType,
     FieldValidation,

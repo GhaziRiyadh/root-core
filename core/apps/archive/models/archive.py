@@ -2,7 +2,7 @@
 
 from typing import List, Optional, TYPE_CHECKING
 from sqlmodel import Field, Relationship
-from src.core.database import BaseModel
+from core.database import BaseModel
 
 if TYPE_CHECKING:
     from .file import File

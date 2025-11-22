@@ -1,7 +1,7 @@
 """DocumentType model."""
 
 from sqlmodel import Field
-from src.core.database import BaseModel
+from core.database import BaseModel
 
 
 class DocumentType(BaseModel, table=True):

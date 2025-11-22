@@ -1,10 +1,10 @@
 """File router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.archive.services.file_service import FileService
-from src.core.apps.archive.repositories.file_repository import FileRepository
-from src.core.apps.archive.schemas.file import FileCreate, FileUpdate
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.archive.services.file_service import FileService
+from core.apps.archive.repositories.file_repository import FileRepository
+from core.apps.archive.schemas.file import FileCreate, FileUpdate
 
 resource_name: str = "archive-files"
 

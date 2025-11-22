@@ -7,7 +7,7 @@ from uuid import uuid4
 import aiofiles
 from fastapi import UploadFile
 
-from src.core.config import settings
+from core.config import settings
 
 
 async def save_upload_file(upload_file: UploadFile, destination: Path) -> None:

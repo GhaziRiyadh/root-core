@@ -1,10 +1,10 @@
 """Group router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.auth.services.group_service import GroupService
-from src.core.apps.auth.repositories.group_repository import GroupRepository
-from src.core.apps.auth.schemas.group import GroupCreate, GroupUpdate
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.auth.services.group_service import GroupService
+from core.apps.auth.repositories.group_repository import GroupRepository
+from core.apps.auth.schemas.group import GroupCreate, GroupUpdate
 
 resource_name: str = "groups"
 

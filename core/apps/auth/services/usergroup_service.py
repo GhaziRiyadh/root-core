@@ -1,9 +1,9 @@
 """UserGroup service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.usergroup_repository import UserGroupRepository
-from src.core.apps.auth.models.usergroup import UserGroup
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.usergroup_repository import UserGroupRepository
+from core.apps.auth.models.usergroup import UserGroup
 
 
 class UserGroupService(BaseService[UserGroup]):

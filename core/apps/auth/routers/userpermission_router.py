@@ -1,12 +1,12 @@
 """UserPermission router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.auth.services.userpermission_service import UserPermissionService
-from src.core.apps.auth.repositories.userpermission_repository import (
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.auth.services.userpermission_service import UserPermissionService
+from core.apps.auth.repositories.userpermission_repository import (
     UserPermissionRepository,
 )
-from src.core.apps.auth.schemas.userpermission import (
+from core.apps.auth.schemas.userpermission import (
     UserPermissionCreate,
     UserPermissionUpdate,
 )

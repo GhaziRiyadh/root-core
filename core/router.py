@@ -2,7 +2,7 @@
 from typing import Callable, Optional
 from typing_extensions import Literal
 
-from src.core.config import PermissionAction
+from core.config import PermissionAction
 
 
 def add_route(

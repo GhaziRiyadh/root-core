@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 from pydantic_settings import BaseSettings
 
-from src.core.env_manager import EnvManager
+from core.env_manager import EnvManager
 from enum import Enum
 
 
@@ -40,10 +40,10 @@ class Settings(BaseSettings):
     STATIC_DIR: str = EnvManager.get("STATIC_DIR", "static")
 
     # Base user model
-    USER_MODEL: str = EnvManager.get("USER_MODEL", "src.core.apps.auth.models.user")
+    USER_MODEL: str = EnvManager.get("USER_MODEL", "core.apps.auth.models.user")
 
     # Base log model
-    LOG_MODEL: str = EnvManager.get("LOG_MODEL", "src.core.apps.base.models.log")
+    LOG_MODEL: str = EnvManager.get("LOG_MODEL", "core.apps.base.models.log")
 
     # actions
 

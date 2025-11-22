@@ -1,9 +1,9 @@
 """GroupRole service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.grouprole_repository import GroupRoleRepository
-from src.core.apps.auth.models.grouprole import GroupRole
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.grouprole_repository import GroupRoleRepository
+from core.apps.auth.models.grouprole import GroupRole
 
 
 class GroupRoleService(BaseService[GroupRole]):

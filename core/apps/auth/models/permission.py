@@ -5,11 +5,11 @@ from sqlmodel import Field, Relationship, UniqueConstraint
 
 from .rolepermission import RolePermission
 from .userpermission import UserPermission
-from src.core.database import BaseModel
+from core.database import BaseModel
 
 if TYPE_CHECKING:
     from .role import Role
-from src.core.apps.auth.models.user import User
+from core.apps.auth.models.user import User
 
 
 class Permission(BaseModel, table=True):

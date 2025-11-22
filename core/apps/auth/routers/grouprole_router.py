@@ -1,10 +1,10 @@
 """GroupRole router."""
 
-from src.core.database import get_session
-from src.core.bases.crud_api import CRUDApi
-from src.core.apps.auth.services.grouprole_service import GroupRoleService
-from src.core.apps.auth.repositories.grouprole_repository import GroupRoleRepository
-from src.core.apps.auth.schemas.grouprole import GroupRoleCreate, GroupRoleUpdate
+from core.database import get_session
+from core.bases.crud_api import CRUDApi
+from core.apps.auth.services.grouprole_service import GroupRoleService
+from core.apps.auth.repositories.grouprole_repository import GroupRoleRepository
+from core.apps.auth.schemas.grouprole import GroupRoleCreate, GroupRoleUpdate
 
 resource_name: str = "role-groups"
 

@@ -1,12 +1,12 @@
 """DocumentType router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.archive.services.document_type_service import DocumentTypeService
-from src.core.apps.archive.repositories.document_type_repository import (
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.archive.services.document_type_service import DocumentTypeService
+from core.apps.archive.repositories.document_type_repository import (
     DocumentTypeRepository,
 )
-from src.core.apps.archive.schemas.document_type import (
+from core.apps.archive.schemas.document_type import (
     DocumentTypeCreate,
     DocumentTypeUpdate,
 )

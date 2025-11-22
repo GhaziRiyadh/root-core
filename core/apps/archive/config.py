@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings
 
-from src.core.env_manager import EnvManager
+from core.env_manager import EnvManager
 
 
 class Config(BaseSettings):

@@ -3,11 +3,11 @@
 from typing import Any, Dict, List
 
 from sqlmodel import SQLModel
-from src.core.apps.auth.schemas.user import UserCreate
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.user_repository import UserRepository
-from src.core.apps.auth.models.user import User
-from src.core.schemas.fields import (
+from core.apps.auth.schemas.user import UserCreate
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.user_repository import UserRepository
+from core.apps.auth.models.user import User
+from core.schemas.fields import (
     DynamicFormConfig,
     FieldType,
     FieldValidation,

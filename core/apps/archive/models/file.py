@@ -2,11 +2,11 @@
 
 from typing import Optional
 from sqlmodel import Column, DateTime, Enum, Field, Relationship
-from src.core.apps.archive.models.archive import Archive
-from src.core.apps.archive.utils.image_sizes import ImageSize
-from src.core.database import BaseModel
+from core.apps.archive.models.archive import Archive
+from core.apps.archive.utils.image_sizes import ImageSize
+from core.database import BaseModel
 from datetime import datetime
-from src.core.config import settings
+from core.config import settings
 
 
 class File(BaseModel, table=True):

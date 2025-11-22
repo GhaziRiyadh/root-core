@@ -2,11 +2,11 @@ from typing import Callable, List, Optional, Type
 from fastapi import APIRouter, FastAPI, Request, Depends
 from pydantic import BaseModel
 
-from src.core.apps.auth.middlewares.require_permissions import require_permissions
-from src.core.bases.base_middleware import BaseMiddleware
+from core.apps.auth.middlewares.require_permissions import require_permissions
+from core.bases.base_middleware import BaseMiddleware
 
-from src.core.apps.auth.utils.utils import get_current_active_user
-from src.core.utils.utils import get_current_app
+from core.apps.auth.utils.utils import get_current_active_user
+from core.utils.utils import get_current_app
 import inspect
 import os
 

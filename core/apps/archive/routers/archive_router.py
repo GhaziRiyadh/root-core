@@ -1,15 +1,15 @@
 """Archive router."""
 
-from src.core.router import add_route
-from src.core.bases.crud_api import CRUDApi
-from src.core.config import PermissionAction
-from src.core.database import get_session
-from src.core.apps.archive.services.archive_service import ArchiveService
-from src.core.apps.archive.repositories.archive_repository import ArchiveRepository
-from src.core.apps.archive.schemas.archive import ArchiveCreate, ArchiveUpdate
+from core.router import add_route
+from core.bases.crud_api import CRUDApi
+from core.config import PermissionAction
+from core.database import get_session
+from core.apps.archive.services.archive_service import ArchiveService
+from core.apps.archive.repositories.archive_repository import ArchiveRepository
+from core.apps.archive.schemas.archive import ArchiveCreate, ArchiveUpdate
 from fastapi import Form, UploadFile, status
 from src.core import exceptions
-from src.core.response import handlers
+from core.response import handlers
 
 resource_name: str = "archives"
 

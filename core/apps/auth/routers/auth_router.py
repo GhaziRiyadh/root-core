@@ -4,14 +4,14 @@ from typing import Annotated
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
-from src.core.apps.auth.routers.user_router import get_user_repository
-from src.core.apps.auth.utils.utils import Token, authenticate_user, create_access_token
-from src.core.apps.auth.utils.utils import get_password_hash
-from src.core.bases.base_router import BaseRouter
-from src.core.config import PermissionAction
-from src.core.config import settings
-from src.core.response import handlers
-from src.core.router import add_route
+from core.apps.auth.routers.user_router import get_user_repository
+from core.apps.auth.utils.utils import Token, authenticate_user, create_access_token
+from core.apps.auth.utils.utils import get_password_hash
+from core.bases.base_router import BaseRouter
+from core.config import PermissionAction
+from core.config import settings
+from core.response import handlers
+from core.router import add_route
 from ..schemas.user import UserCreate
 
 resource_name = "auth"

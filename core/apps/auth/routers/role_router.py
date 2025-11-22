@@ -1,10 +1,10 @@
 """Role router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.auth.services.role_service import RoleService
-from src.core.apps.auth.repositories.role_repository import RoleRepository
-from src.core.apps.auth.schemas.role import RoleCreate, RoleUpdate
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.auth.services.role_service import RoleService
+from core.apps.auth.repositories.role_repository import RoleRepository
+from core.apps.auth.schemas.role import RoleCreate, RoleUpdate
 
 resource_name: str = "roles"
 

@@ -1,12 +1,12 @@
 """RolePermission router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.auth.services.rolepermissions_service import RolePermissionService
-from src.core.apps.auth.repositories.rolepermissions_repository import (
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.auth.services.rolepermissions_service import RolePermissionService
+from core.apps.auth.repositories.rolepermissions_repository import (
     RolePermissionRepository,
 )
-from src.core.apps.auth.schemas.rolepermissions import (
+from core.apps.auth.schemas.rolepermissions import (
     RolePermissionCreate,
     RolePermissionUpdate,
 )

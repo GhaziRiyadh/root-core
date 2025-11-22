@@ -1,7 +1,7 @@
 """Role repository."""
 
 from typing import TYPE_CHECKING, List
-from src.core.bases.base_repository import BaseRepository
+from core.bases.base_repository import BaseRepository
 from ..models.role import Role
 from sqlalchemy.orm import selectinload
 from sqlmodel.ext.asyncio.session import AsyncSession

@@ -2,8 +2,8 @@ from pathlib import Path
 import mimetypes
 from typing import List
 
-from src.core.apps.archive.models.archive import Archive
-from src.core.apps.archive.models.file import File
+from core.apps.archive.models.archive import Archive
+from core.apps.archive.models.file import File
 from ..config import archive_setting
 from datetime import datetime, timezone
 

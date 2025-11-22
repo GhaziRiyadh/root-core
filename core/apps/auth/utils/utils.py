@@ -10,10 +10,10 @@ from pwdlib import PasswordHash
 from pydantic import BaseModel
 from sqlmodel import select
 
-# from src.core.apps.auth.routers.permission_router import get_permission_repository
-from src.core.config import settings
-from src.core.database import get_session
-from src.core.exceptions import NotFoundException
+# from core.apps.auth.routers.permission_router import get_permission_repository
+from core.config import settings
+from core.database import get_session
+from core.exceptions import NotFoundException
 from sqlalchemy.orm import selectinload
 
 

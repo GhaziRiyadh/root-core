@@ -1,10 +1,10 @@
 """Permission router."""
 
-from src.core.database import get_session
-from src.core.bases.crud_api import CRUDApi
-from src.core.apps.auth.services.permission_service import PermissionService
-from src.core.apps.auth.repositories.permission_repository import PermissionRepository
-from src.core.apps.auth.schemas.permission import PermissionCreate, PermissionUpdate
+from core.database import get_session
+from core.bases.crud_api import CRUDApi
+from core.apps.auth.services.permission_service import PermissionService
+from core.apps.auth.repositories.permission_repository import PermissionRepository
+from core.apps.auth.schemas.permission import PermissionCreate, PermissionUpdate
 
 resource_name: str = "permissions"
 

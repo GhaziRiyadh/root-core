@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Optional, Type, get_type_hints
 from sqlmodel import SQLModel
 from sqlmodel.main import FieldInfo
 
-from src.core.schemas.fields import (
+from core.schemas.fields import (
     ModelField,
     FieldType,
     FieldValidation,

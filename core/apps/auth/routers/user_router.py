@@ -2,17 +2,17 @@
 
 from typing import TYPE_CHECKING, Annotated, Any
 from fastapi import Depends
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.router import add_route
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.router import add_route
 from ..services.user_service import UserService
 from ..repositories.user_repository import UserRepository
 from ..schemas.user import UserCreate, UserUpdate
-from src.core.response import handlers
+from core.response import handlers
 from ..utils.utils import (
     get_current_active_user,
 )
-from src.core.config import PermissionAction
+from core.config import PermissionAction
 
 if TYPE_CHECKING:
     from ..models.user import User

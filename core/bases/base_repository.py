@@ -17,16 +17,16 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from pydantic import BaseModel
 
-from src.core.helpers.commit_action import CommitAction
-from src.core.response import schemas
-from src.core.config import settings
-from src.core.apps.auth.utils.utils import auth
+from core.helpers.commit_action import CommitAction
+from core.response import schemas
+from core.config import settings
+from core.apps.auth.utils.utils import auth
 
 
-from src.core.logger import get_logger
+from core.logger import get_logger
 from typing import Callable, Dict, Any, List, Optional
 
-from src.core.utils.query_utils import add_include_deleted
+from core.utils.query_utils import add_include_deleted
 
 logger = get_logger(__name__)
 

@@ -3,13 +3,13 @@
 from typing import Any, Dict, List
 
 from fastapi import UploadFile
-from src.core.apps.archive.routers.file_router import get_file_repository
-from src.core.apps.archive.utils.upload_file import handle_upload_file
-from src.core.apps.archive.utils.utils import archive_to_srcset, get_file_url
-from src.core.bases.base_service import BaseService
-from src.core.apps.archive.repositories.archive_repository import ArchiveRepository
-from src.core.apps.archive.models.archive import Archive
-from src.core.exceptions import ServiceException
+from core.apps.archive.routers.file_router import get_file_repository
+from core.apps.archive.utils.upload_file import handle_upload_file
+from core.apps.archive.utils.utils import archive_to_srcset, get_file_url
+from core.bases.base_service import BaseService
+from core.apps.archive.repositories.archive_repository import ArchiveRepository
+from core.apps.archive.models.archive import Archive
+from core.exceptions import ServiceException
 
 
 class ArchiveService(BaseService[Archive]):

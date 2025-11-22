@@ -1,4 +1,4 @@
-from src.core.bases.base_command import BaseCommand
+from core.bases.base_command import BaseCommand
 
 
 class CleanCommand(BaseCommand):

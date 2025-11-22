@@ -1,11 +1,11 @@
 """UserPermission service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.userpermission_repository import (
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.userpermission_repository import (
     UserPermissionRepository,
 )
-from src.core.apps.auth.models.userpermission import UserPermission
+from core.apps.auth.models.userpermission import UserPermission
 
 
 class UserPermissionService(BaseService[UserPermission]):

@@ -7,9 +7,9 @@ from sqlmodel import JSON, Field, SQLModel
 from sqlmodel import Column, DateTime
 from datetime import datetime
 
-from src.core.apps.auth.models.user import User
-from src.core.apps.auth.utils.utils import auth
-from src.core.config import settings
+from core.apps.auth.models.user import User
+from core.apps.auth.utils.utils import auth
+from core.config import settings
 
 
 class Log(SQLModel, table=True):

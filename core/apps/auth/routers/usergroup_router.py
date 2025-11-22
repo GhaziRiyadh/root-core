@@ -1,10 +1,10 @@
 """UserGroup router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.auth.services.usergroup_service import UserGroupService
-from src.core.apps.auth.repositories.usergroup_repository import UserGroupRepository
-from src.core.apps.auth.schemas.usergroup import UserGroupCreate, UserGroupUpdate
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.auth.services.usergroup_service import UserGroupService
+from core.apps.auth.repositories.usergroup_repository import UserGroupRepository
+from core.apps.auth.schemas.usergroup import UserGroupCreate, UserGroupUpdate
 
 resource_name: str = "user-groups"
 

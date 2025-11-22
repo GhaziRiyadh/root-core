@@ -3,7 +3,7 @@
 from typing import Optional
 from pydantic import BaseModel
 
-from src.core.apps.auth.utils.enums import PermissionActions
+from core.apps.auth.utils.enums import PermissionActions
 
 
 class PermissionCreate(BaseModel):

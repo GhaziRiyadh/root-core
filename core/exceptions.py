@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Optional, Union
 from fastapi import status
 from pydantic import BaseModel
-from src.core.response.schemas import ErrorDetail
+from core.response.schemas import ErrorDetail
 
 
 class BaseAPIException(Exception):

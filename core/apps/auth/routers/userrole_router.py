@@ -1,10 +1,10 @@
 """UserRole router."""
 
-from src.core.bases.crud_api import CRUDApi
-from src.core.database import get_session
-from src.core.apps.auth.services.userrole_service import UserRoleService
-from src.core.apps.auth.repositories.userrole_repository import UserRoleRepository
-from src.core.apps.auth.schemas.userrole import UserRoleCreate, UserRoleUpdate
+from core.bases.crud_api import CRUDApi
+from core.database import get_session
+from core.apps.auth.services.userrole_service import UserRoleService
+from core.apps.auth.repositories.userrole_repository import UserRoleRepository
+from core.apps.auth.schemas.userrole import UserRoleCreate, UserRoleUpdate
 
 resource_name: str = "user-roles"
 

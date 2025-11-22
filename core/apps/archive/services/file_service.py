@@ -1,9 +1,9 @@
 """File service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.archive.repositories.file_repository import FileRepository
-from src.core.apps.archive.models.file import File
+from core.bases.base_service import BaseService
+from core.apps.archive.repositories.file_repository import FileRepository
+from core.apps.archive.models.file import File
 
 
 class FileService(BaseService[File]):

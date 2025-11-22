@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, List
 from sqlmodel import Field, Relationship
 from .grouprole import GroupRole
 from .usergroup import UserGroup
-from src.core.database import BaseModel
+from core.database import BaseModel
 
 
 if TYPE_CHECKING:

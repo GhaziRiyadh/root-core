@@ -5,7 +5,7 @@ from PIL import Image
 from PIL.Image import Resampling
 from pydantic import BaseModel
 from io import BytesIO
-from src.core.apps.archive.utils.image_sizes import ImageSize
+from core.apps.archive.utils.image_sizes import ImageSize
 
 
 class ImageSizeReturnSchema(BaseModel):

@@ -3,11 +3,11 @@
 from typing import Any, Dict, List
 
 from sqlmodel import SQLModel
-from src.core.apps.auth.schemas.group import GroupCreate
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.group_repository import GroupRepository
-from src.core.apps.auth.models.group import Group
-from src.core.schemas.fields import (
+from core.apps.auth.schemas.group import GroupCreate
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.group_repository import GroupRepository
+from core.apps.auth.models.group import Group
+from core.schemas.fields import (
     DynamicFormConfig,
     FieldType,
     FieldValidation,

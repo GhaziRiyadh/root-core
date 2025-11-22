@@ -1,9 +1,9 @@
 """Log service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.base.repositories.log_repository import LogRepository
-from src.core.apps.base.models.log import Log
+from core.bases.base_service import BaseService
+from core.apps.base.repositories.log_repository import LogRepository
+from core.apps.base.models.log import Log
 
 
 class LogService(BaseService[Log]):

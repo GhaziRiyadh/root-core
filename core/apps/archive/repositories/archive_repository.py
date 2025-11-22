@@ -1,17 +1,17 @@
 """Archive repository."""
 
-from src.core.apps.archive.utils.Image_processor import AsyncImageProcessor
-from src.core.apps.archive.utils.utils import get_file_type_by_extension
-from src.core.bases.base_repository import BaseRepository
-from src.core.apps.archive.models.archive import Archive
-from src.core.apps.archive.models.file import File
-from src.core.apps.archive.models.archive import Archive
+from core.apps.archive.utils.Image_processor import AsyncImageProcessor
+from core.apps.archive.utils.utils import get_file_type_by_extension
+from core.bases.base_repository import BaseRepository
+from core.apps.archive.models.archive import Archive
+from core.apps.archive.models.file import File
+from core.apps.archive.models.archive import Archive
 from sqlalchemy.orm import selectinload
 
 from pathlib import Path
 import mimetypes
 
-from src.core.apps.auth.utils.utils import auth
+from core.apps.auth.utils.utils import auth
 
 
 class ArchiveRepository(BaseRepository[Archive]):

@@ -1,11 +1,11 @@
 """DocumentType service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.archive.repositories.document_type_repository import (
+from core.bases.base_service import BaseService
+from core.apps.archive.repositories.document_type_repository import (
     DocumentTypeRepository,
 )
-from src.core.apps.archive.models.document_type import DocumentType
+from core.apps.archive.models.document_type import DocumentType
 
 
 class DocumentTypeService(BaseService[DocumentType]):

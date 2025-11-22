@@ -1,9 +1,9 @@
 """UserRole service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.userrole_repository import UserRoleRepository
-from src.core.apps.auth.models.userrole import UserRole
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.userrole_repository import UserRoleRepository
+from core.apps.auth.models.userrole import UserRole
 
 
 class UserRoleService(BaseService[UserRole]):

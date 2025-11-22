@@ -1,9 +1,9 @@
 """Permission service."""
 
 from typing import Any, Dict
-from src.core.bases.base_service import BaseService
-from src.core.apps.auth.repositories.permission_repository import PermissionRepository
-from src.core.apps.auth.models.permission import Permission
+from core.bases.base_service import BaseService
+from core.apps.auth.repositories.permission_repository import PermissionRepository
+from core.apps.auth.models.permission import Permission
 
 
 class PermissionService(BaseService[Permission]):

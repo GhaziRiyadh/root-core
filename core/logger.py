@@ -5,7 +5,7 @@ import logging.handlers
 import os
 from typing import Any, Dict, Optional, MutableMapping, override
 
-from src.core.env_manager import EnvManager
+from core.env_manager import EnvManager
 
 # /d:/projects/mutor/backend/src/core/logger.py
 """

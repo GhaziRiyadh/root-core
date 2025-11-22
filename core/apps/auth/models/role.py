@@ -5,7 +5,7 @@ from sqlmodel import Field, Relationship
 from .grouprole import GroupRole
 from .rolepermission import RolePermission
 from .userrole import UserRole
-from src.core.database import BaseModel
+from core.database import BaseModel
 
 
 from .permission import Permission

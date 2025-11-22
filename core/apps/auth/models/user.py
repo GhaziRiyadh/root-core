@@ -4,11 +4,11 @@ from typing import List, Optional, TYPE_CHECKING
 from sqlmodel import Field, Relationship
 from sqlalchemy import Index, text
 
-# from src.core.apps.auth.models.usergroup import UserGroup
+# from core.apps.auth.models.usergroup import UserGroup
 from .usergroup import UserGroup
 from .userpermission import UserPermission
 from .userrole import UserRole
-from src.core.database import BaseModel
+from core.database import BaseModel
 
 
 # from src.apps.passenger.models.passenger import Passenger

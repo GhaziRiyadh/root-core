@@ -2,7 +2,7 @@ from typing import Any, Callable, Dict, List, Optional, Type
 from fastapi import Query, Request, status
 from pydantic import BaseModel, ValidationError
 
-from src.core.bases.base_router import BaseRouter
+from core.bases.base_router import BaseRouter
 
 from ..router import add_route
 from .base_service import BaseService
