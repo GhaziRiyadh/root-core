@@ -2,7 +2,7 @@ from typing import Callable, List, Optional, Type
 from fastapi import APIRouter, FastAPI, Request, Depends
 from pydantic import BaseModel
 
-from core.security import require_permissions, get_current_active_user
+from core.security_manager import require_permissions, get_current_active_user
 from core.bases.base_middleware import BaseMiddleware
 from core.utils.utils import get_current_app
 import inspect

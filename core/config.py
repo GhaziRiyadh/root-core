@@ -60,7 +60,12 @@ class Settings(BaseSettings):
     )
 
     GET_USER_FUNCTION: str | None = EnvManager.get(
-        "GET_USER_FUNCTION",None
+        "GET_USER_FUNCTION", None
+    )
+
+    # Auth class for dynamic authentication (e.g., "core.security_manager.SecurityManager")
+    AUTH_CLASS: str = EnvManager.get(
+        "AUTH_CLASS", "core.security_manager.SecurityManager"
     )
 
     # actions
