@@ -9,6 +9,12 @@ from core.commands.list_apps_command import ListAppsCommand
 from core.commands.delete_app_command import DeleteAppCommand
 from core.commands.delete_model_command import DeleteModelCommand
 from core.commands.generate_permissions_command import GeneratePermissionsCommand
+from core.commands.db_commands import (
+    DbInitCommand,
+    DbMigrateCommand,
+    DbUpgradeCommand,
+    DbDowngradeCommand,
+)
 
 app = typer.Typer(help="Core Framework CLI")
 
@@ -27,6 +33,12 @@ class CLIEntry:
         self.register_command(DeleteAppCommand)
         self.register_command(DeleteModelCommand)
         self.register_command(GeneratePermissionsCommand)
+        
+        # Database commands
+        self.register_command(DbInitCommand)
+        self.register_command(DbMigrateCommand)
+        self.register_command(DbUpgradeCommand)
+        self.register_command(DbDowngradeCommand)
         
         # Auto-discover and register app-specific commands
         self._register_app_commands()

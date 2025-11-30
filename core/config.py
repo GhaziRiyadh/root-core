@@ -48,6 +48,17 @@ class Settings(BaseSettings):
     # apps dir
     APPS_DIR: str = EnvManager.get("APPS_DIR", "apps")
 
+    # Kafka configuration
+    KAFKA_BOOTSTRAP_SERVERS: str = EnvManager.get(
+        "KAFKA_BOOTSTRAP_SERVERS", "localhost:9092"
+    )
+    KAFKA_CONSUMER_GROUP: str = EnvManager.get(
+        "KAFKA_CONSUMER_GROUP", f"{PROJECT_NAME}-consumer-group"
+    )
+    KAFKA_AUTO_OFFSET_RESET: str = EnvManager.get(
+        "KAFKA_AUTO_OFFSET_RESET", "earliest"
+    )
+
     # actions
 
     ACTIONS: List[PermissionAction] = [action for action in PermissionAction]
