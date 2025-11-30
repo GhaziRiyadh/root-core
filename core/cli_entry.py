@@ -9,6 +9,7 @@ from core.commands.list_apps_command import ListAppsCommand
 from core.commands.delete_app_command import DeleteAppCommand
 from core.commands.delete_model_command import DeleteModelCommand
 from core.commands.generate_permissions_command import GeneratePermissionsCommand
+from core.commands.service_create_command import ServiceCreateCommand
 from core.commands.db_commands import (
     DbInitCommand,
     DbMigrateCommand,
@@ -34,6 +35,9 @@ class CLIEntry:
         self.register_command(DeleteAppCommand)
         self.register_command(DeleteModelCommand)
         self.register_command(GeneratePermissionsCommand)
+        
+        # Microservice commands
+        self.register_command(ServiceCreateCommand)
         
         # Database commands
         self.register_command(DbInitCommand)

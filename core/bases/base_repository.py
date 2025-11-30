@@ -20,7 +20,7 @@ from pydantic import BaseModel
 from core.helpers.commit_action import CommitAction
 from core.response import schemas
 from core.config import settings
-from core.apps.auth.utils.utils import auth
+from core.security import auth
 
 
 from core.logger import get_logger

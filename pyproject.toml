@@ -5,7 +5,7 @@ description = "This is the core package for root projects."
 authors = [{ name = "Ghaziriyadh", email = "ghazriyadh2@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = ["aiokafka (>=0.12.0,<0.13.0)", "pwdlib (>=0.3.0,<0.4.0)", "pyjwt (>=2.10.1,<3.0.0)", "fastapi[standard] (>=0.122.0,<0.123.0)"]
 
 [project.urls]
 Homepage = "https://github.com/GhaziRiyadh/root-core"

@@ -44,7 +44,7 @@ def get_base_path(app_name: str) -> str:
 def write_file(path: str, content: str):
     """Create a file if it does not exist."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:  # Add encoding here
         f.write(content)
     print(f"✅ Created: {path}")
 

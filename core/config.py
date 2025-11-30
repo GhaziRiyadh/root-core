@@ -59,6 +59,10 @@ class Settings(BaseSettings):
         "KAFKA_AUTO_OFFSET_RESET", "earliest"
     )
 
+    GET_USER_FUNCTION: str | None = EnvManager.get(
+        "GET_USER_FUNCTION",None
+    )
+
     # actions
 
     ACTIONS: List[PermissionAction] = [action for action in PermissionAction]

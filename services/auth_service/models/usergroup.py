@@ -1,0 +1,21 @@
+"""UserGroup model."""
+
+from sqlmodel import Field, SQLModel
+
+
+class UserGroup(SQLModel, table=True):
+    """UserGroup model class."""
+
+    __tablename__ = "auth_user_groups"  # type: ignore
+    user_id: int = Field(
+        foreign_key="auth_users.id",
+        primary_key=True,
+        title=" المستخدم",
+        description=" المستخدم المرتبط بالصلاحية",
+    )
+    group_id: int = Field(
+        foreign_key="auth_groups.id",
+        primary_key=True,
+        title=" المجموعة",
+        description=" المجموعة المرتبط بالمستخدم",
+    )
