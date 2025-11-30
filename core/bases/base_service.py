@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from sqlmodel import SQLModel
 
 from core.bases.base_repository import BaseRepository
-from src.core import exceptions
+from core import exceptions
 from core.response.schemas import PaginatedResponse
 from core.schemas.fields import DynamicFormConfig, ModelDefinition
 from core.services.field_service import FieldService

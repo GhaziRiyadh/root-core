@@ -4,9 +4,9 @@ from typing import Dict, List
 
 def get_apps(apps: list[list[str]] | None = None) -> Dict[str, str]:
     if apps is None:
-        apps_dirs = [os.path.join("src", "apps")]
+        apps_dirs = [os.path.join("core", "apps")]
     else:
-        apps_dirs = [os.path.join("src", *app) for app in apps]
+        apps_dirs = [os.path.join(*app) for app in apps]
 
     return {
         name: os.path.join(apps_dir, name)

@@ -18,7 +18,7 @@ Provides:
 
 
 DEFAULT_LEVEL = logging.INFO
-LOG_DIR = EnvManager.get("MUTOR_LOG_DIR", "logs")
+LOG_DIR = EnvManager.get("BASE_LOG_DIR", "logs")
 LOG_FILE = os.path.join(LOG_DIR, "app.log")
 MAX_BYTES = 10 * 1024 * 1024  # 10 MB
 BACKUP_COUNT = 5

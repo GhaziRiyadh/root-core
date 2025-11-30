@@ -8,7 +8,7 @@ from core.apps.archive.services.archive_service import ArchiveService
 from core.apps.archive.repositories.archive_repository import ArchiveRepository
 from core.apps.archive.schemas.archive import ArchiveCreate, ArchiveUpdate
 from fastapi import Form, UploadFile, status
-from src.core import exceptions
+from core import exceptions
 from core.response import handlers
 
 resource_name: str = "archives"

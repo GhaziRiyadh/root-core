@@ -1,0 +1,17 @@
+import uvicorn
+from core.app import CoreApp
+
+# Create the CoreApp instance
+core_app = CoreApp()
+
+# Get the FastAPI app
+app = core_app.get_app()
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,  # Enable auto-reload in development
+        log_level="info",
+    )
