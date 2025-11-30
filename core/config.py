@@ -45,6 +45,9 @@ class Settings(BaseSettings):
     # Base log model
     LOG_MODEL: str = EnvManager.get("LOG_MODEL", "core.apps.base.models.log")
 
+    # apps dir
+    APPS_DIR: str = EnvManager.get("APPS_DIR", "apps")
+
     # actions
 
     ACTIONS: List[PermissionAction] = [action for action in PermissionAction]
