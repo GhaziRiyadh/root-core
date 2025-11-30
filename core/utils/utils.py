@@ -1,23 +1,42 @@
 import os, time
 from typing import Dict, List
+from core.config import settings
 
 
 def get_apps(apps: list[list[str]] | None = None) -> Dict[str, str]:
+    """
+    Get all app directories using APPS_DIR from settings.
+    
+    Args:
+        apps: Optional list of app paths to filter
+        
+    Returns:
+        Dictionary mapping app names to their paths
+    """
+    apps_dir = settings.APPS_DIR
+    
+    # If APPS_DIR is relative, make it absolute from project root
+    if not os.path.isabs(apps_dir):
+        # Get project root (assuming this file is in core/utils/utils.py)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(os.path.dirname(current_dir))
+        apps_dir = os.path.join(project_root, apps_dir)
+    
     if apps is None:
-        apps_dirs = [os.path.join("core", "apps")]
+        apps_dirs = [apps_dir]
     else:
-        apps_dirs = [os.path.join(*app) for app in apps]
+        apps_dirs = [os.path.join(apps_dir, *app) for app in apps]
 
     return {
-        name: os.path.join(apps_dir, name)
-        for apps_dir in apps_dirs
-        for name in os.listdir(apps_dir)
-        if os.path.isdir(os.path.join(apps_dir, name)) and not name.startswith("__")
+        name: os.path.join(apps_dir_path, name)
+        for apps_dir_path in apps_dirs
+        for name in os.listdir(apps_dir_path)
+        if os.path.isdir(os.path.join(apps_dir_path, name)) and not name.startswith("__")
     }
 
 
 _cache: dict[str, tuple[float, dict[str, dict[str, str]]]] = {}
-_CACHE_TTL = 60 * 60  # ثانية
+_CACHE_TTL = 60 * 60  # seconds
 
 
 def get_app_paths(

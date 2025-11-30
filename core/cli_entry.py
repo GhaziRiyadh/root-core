@@ -27,6 +27,17 @@ class CLIEntry:
         self.register_command(DeleteAppCommand)
         self.register_command(DeleteModelCommand)
         self.register_command(GeneratePermissionsCommand)
+        
+        # Auto-discover and register app-specific commands
+        self._register_app_commands()
+    
+    def _register_app_commands(self):
+        """Discover and register commands from app directories."""
+        from core.commands.command_discovery import discover_app_commands
+        
+        app_commands = discover_app_commands()
+        for command_class in app_commands:
+            self.register_command(command_class)
 
     def register_command(self, command_class: Type[BaseCommand]):
         """Register a command class with the CLI."""

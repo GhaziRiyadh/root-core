@@ -1,5 +1,6 @@
 import os
 import re
+from core.config import settings
 
 def to_snake_case(name):
     # Add an underscore before each uppercase letter that is followed by a lowercase letter
@@ -18,16 +19,26 @@ def to_snake_case(name):
 
 
 def get_base_path(app_name: str) -> str:
-    # Get the absolute path of the CLI script
-    # We need to go up to core/apps/<app_name>
+    """
+    Get the base path for an app using APPS_DIR from settings.
     
-    # Assuming this file is in core/commands/utils.py
-    # core/commands/utils.py -> core/commands -> core
+    Args:
+        app_name: Name of the app
+        
+    Returns:
+        Absolute path to the app directory
+    """
+    apps_dir = settings.APPS_DIR
     
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    core_dir = os.path.dirname(os.path.dirname(current_dir)) 
+    # If APPS_DIR is relative, make it absolute from project root
+    if not os.path.isabs(apps_dir):
+        # Assuming we're in core/commands/utils.py
+        # Go up to project root: core/commands -> core -> root
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(os.path.dirname(current_dir))
+        apps_dir = os.path.join(project_root, apps_dir)
     
-    return os.path.join(core_dir, "core", "apps", app_name)
+    return os.path.join(apps_dir, app_name)
 
 
 def write_file(path: str, content: str):
