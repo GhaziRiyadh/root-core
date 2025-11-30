@@ -15,6 +15,7 @@ from core.commands.db_commands import (
     DbUpgradeCommand,
     DbDowngradeCommand,
 )
+from core.commands.db_list_command import DbListCommand
 
 app = typer.Typer(help="Core Framework CLI")
 
@@ -39,6 +40,7 @@ class CLIEntry:
         self.register_command(DbMigrateCommand)
         self.register_command(DbUpgradeCommand)
         self.register_command(DbDowngradeCommand)
+        self.register_command(DbListCommand)
         
         # Auto-discover and register app-specific commands
         self._register_app_commands()

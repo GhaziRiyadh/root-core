@@ -10,6 +10,15 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from core.config import settings
 from core.logger import get_logger
 
+# Import app-specific database functions
+from core.database_registry import (
+    get_app_session,
+    discover_app_database,
+    discover_all_app_databases,
+    get_async_engine,
+    get_sync_engine,
+)
+
 logger = get_logger(__name__)
 
 engine = create_async_engine(settings.ASYNC_DATABASE_URI, echo=False, future=True)

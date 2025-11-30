@@ -11,11 +11,22 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError, ProgrammingError
 from core.bases.base_command import BaseCommand
 from core.config import settings
+from core.database_registry import discover_app_database, discover_all_app_databases
 
 
 class DbInitCommand(BaseCommand):
     def execute(
         self,
+        app: str = typer.Option(
+            None,
+            "--app",
+            help="Specific app to initialize (e.g., 'auth', 'driver')"
+        ),
+        all_apps: bool = typer.Option(
+            False,
+            "--all-apps",
+            help="Initialize all discovered app databases"
+        ),
         create_db: bool = typer.Option(
             True,
             "--create-db/--no-create-db",
@@ -33,30 +44,77 @@ class DbInitCommand(BaseCommand):
         ),
     ):
         """
-        Initialize database: create DB and run migrations.
+        Initialize database(s): create DB and run migrations.
         
         Examples:
-            python cli.py db-init
-            python cli.py db-init --no-create-db
-            python cli.py db-init --no-migrate
+            python cli.py db-init                    # Default database
+            python cli.py db-init --app auth         # Auth app database
+            python cli.py db-init --all-apps         # All app databases
+            python cli.py db-init --no-create-db     # Skip database creation
         """
         print("🔧 Database Initialization")
         print("=" * 50)
         
-        if create_db:
-            self._create_database()
-        
-        if run_migrations:
-            self._run_migrations(upgrade_head)
+        if all_apps:
+            self._init_all_apps(create_db, run_migrations, upgrade_head)
+        elif app:
+            self._init_app(app, create_db, run_migrations, upgrade_head)
+        else:
+            self._init_default(create_db, run_migrations, upgrade_head)
         
         print("\n✅ Database initialization complete!")
     
-    def _create_database(self):
-        """Create the database if it doesn't exist."""
-        print("\n📦 Creating database...")
+    def _init_all_apps(self, create_db: bool, run_migrations: bool, upgrade_head: bool):
+        """Initialize databases for all apps."""
+        app_databases = discover_all_app_databases()
         
-        # Parse database URL to get database name
-        db_url = settings.DATABASE_URI
+        if not app_databases:
+            print("\n⚠️  No app databases found")
+            return
+        
+        print(f"\n📦 Found {len(app_databases)} app database(s)\n")
+        
+        for app_name, db_url in app_databases.items():
+            print(f"{'='*50}")
+            print(f"🔧 Initializing {app_name} database")
+            print(f"   URL: {db_url}")
+            
+            if create_db:
+                self._create_database(db_url)
+            
+            if run_migrations:
+                self._run_migrations(upgrade_head, app_name)
+    
+    def _init_app(self, app_name: str, create_db: bool, run_migrations: bool, upgrade_head: bool):
+        """Initialize database for a specific app."""
+        db_url = discover_app_database(app_name)
+        
+        print(f"\n📦 Initializing {app_name} database")
+        print(f"   URL: {db_url}")
+        
+        if create_db:
+            self._create_database(db_url)
+        
+        if run_migrations:
+            self._run_migrations(upgrade_head, app_name)
+    
+    def _init_default(self, create_db: bool, run_migrations: bool, upgrade_head: bool):
+        """Initialize default database."""
+        print(f"\n📦 Initializing default database")
+        print(f"   URL: {settings.DATABASE_URI}")
+        
+        if create_db:
+            self._create_database(settings.DATABASE_URI)
+        
+        if run_migrations:
+            self._run_migrations(upgrade_head)
+    
+    def _create_database(self, db_url: str = None):
+        """Create the database if it doesn't exist."""
+        if db_url is None:
+            db_url = settings.DATABASE_URI
+        
+        print("\n   Creating database...")
         
         # Handle PostgreSQL
         if "postgresql" in db_url:
@@ -153,9 +211,9 @@ class DbInitCommand(BaseCommand):
             engine.dispose()
             print(f"   ✅ Created SQLite database: {db_path}")
     
-    def _run_migrations(self, upgrade: bool = True):
+    def _run_migrations(self, upgrade: bool = True, app_name: str = None):
         """Run Alembic migrations."""
-        print("\n🔄 Running migrations...")
+        print("\n   Running migrations...")
         
         try:
             # Check if alembic is initialized
@@ -164,11 +222,17 @@ class DbInitCommand(BaseCommand):
                 return
             
             if upgrade:
+                # Set environment variable for app-specific migrations
+                env = os.environ.copy()
+                if app_name:
+                    env['ALEMBIC_APP'] = app_name
+                
                 # Run migrations
                 result = subprocess.run(
                     ["alembic", "upgrade", "head"],
                     capture_output=True,
-                    text=True
+                    text=True,
+                    env=env
                 )
                 
                 if result.returncode == 0:
