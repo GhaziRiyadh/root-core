@@ -18,7 +18,6 @@ ENV/
 *.env
 *.venv
 Pipfile.lock
-poetry.lock
 
 # --- FastAPI / Uvicorn logs ---
 *.log
@@ -108,3 +107,4 @@ docker-compose.override.yml
 media/
 staticfiles/
 uploads/
+logs/

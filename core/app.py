@@ -12,7 +12,7 @@ from core.config import settings
 from core.database import get_session
 from core.response.handlers import global_exception_handler
 from core.apps.auth.utils.utils import initia_auth
-from core import handle_routers
+from core.module_registry import handle_routers
 
 
 class CoreApp:
