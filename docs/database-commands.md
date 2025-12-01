@@ -10,13 +10,13 @@ Creates the database and runs migrations.
 
 ```bash
 # Create database and run all migrations
-python cli.py db-init
+poetry run python cli.py db-init
 
 # Only create database, skip migrations
-python cli.py db-init --no-migrate
+poetry run python cli.py db-init --no-migrate
 
 # Only run migrations, skip database creation
-python cli.py db-init --no-create-db
+poetry run python cli.py db-init --no-create-db
 ```
 
 **What it does:**
@@ -31,10 +31,10 @@ Creates a new Alembic migration file.
 
 ```bash
 # Auto-generate migration from model changes
-python cli.py db-migrate "Add user table"
+poetry run python cli.py db-migrate "Add user table"
 
 # Create empty migration (manual)
-python cli.py db-migrate "Custom migration" --no-autogenerate
+poetry run python cli.py db-migrate "Custom migration" --no-autogenerate
 ```
 
 **What it does:**
@@ -49,13 +49,13 @@ Applies migrations to upgrade the database.
 
 ```bash
 # Upgrade to latest
-python cli.py db-upgrade
+poetry run python cli.py db-upgrade
 
 # Upgrade to specific revision
-python cli.py db-upgrade abc123
+poetry run python cli.py db-upgrade abc123
 
 # Upgrade one step
-python cli.py db-upgrade +1
+poetry run python cli.py db-upgrade +1
 ```
 
 ### `db-downgrade` - Downgrade Database
@@ -64,13 +64,13 @@ Rolls back migrations.
 
 ```bash
 # Downgrade one step
-python cli.py db-downgrade -1
+poetry run python cli.py db-downgrade -1
 
 # Downgrade to specific revision
-python cli.py db-downgrade abc123
+poetry run python cli.py db-downgrade abc123
 
 # Downgrade to base (remove all)
-python cli.py db-downgrade base
+poetry run python cli.py db-downgrade base
 ```
 
 ## Workflow Example
@@ -79,15 +79,15 @@ python cli.py db-downgrade base
 
 ```bash
 # Create database and apply existing migrations
-python cli.py db-init
+poetry run python cli.py db-init
 ```
 
 ### 2. Add New Model
 
-Create a new model in your app:
+Create a new model in your module:
 
 ```python
-# apps/driver/models/driver.py
+# core/apps/driver/models/driver.py
 from sqlmodel import Field
 from core.database import BaseModel
 
@@ -102,21 +102,21 @@ class Driver(BaseModel, table=True):
 
 ```bash
 # Auto-generate migration
-python cli.py db-migrate "Add driver table"
+poetry run python cli.py db-migrate "Add driver table"
 ```
 
 ### 4. Apply Migration
 
 ```bash
 # Apply the new migration
-python cli.py db-upgrade
+poetry run python cli.py db-upgrade
 ```
 
 ### 5. Rollback (if needed)
 
 ```bash
 # Undo last migration
-python cli.py db-downgrade -1
+poetry run python cli.py db-downgrade -1
 ```
 
 ## Database Support

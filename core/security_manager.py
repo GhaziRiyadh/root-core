@@ -467,7 +467,12 @@ async def authenticate_user(username: str, password: str) -> Optional[Any]:
     return await security().authenticate_user(username, password)
 
 
-async def get_current_user(token: str = Depends(lambda: security().oauth2_scheme)) -> Any:
+def _get_oauth2_scheme():
+    """Get the OAuth2 scheme from security manager."""
+    return security().oauth2_scheme
+
+
+async def get_current_user(token: str = Depends(_get_oauth2_scheme)) -> Any:
     """Get the current user."""
     return await security().get_current_user(token)
 
