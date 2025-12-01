@@ -46,7 +46,7 @@ class Settings(BaseSettings):
     LOG_MODEL: str = EnvManager.get("LOG_MODEL", "core.apps.base.models.log")
 
     # apps dir
-    APPS_DIR: str = EnvManager.get("APPS_DIR", "apps")
+    APPS_DIR: str = EnvManager.get("APPS_DIR", "core/apps")
 
     # Kafka configuration
     KAFKA_BOOTSTRAP_SERVERS: str = EnvManager.get(

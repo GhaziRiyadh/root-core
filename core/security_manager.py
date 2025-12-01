@@ -197,7 +197,7 @@ class SecurityManager:
             return None
         return user
     
-    async def get_current_user(self, token: str = Depends(oauth2_scheme)) -> Any:
+    async def get_current_user(self, token: str) -> Any:
         """Get the current authenticated user from a JWT token."""
         cached_auth = self.get_cached_auth(token)
         if cached_auth:
