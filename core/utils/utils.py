@@ -6,22 +6,22 @@ from core.config import settings
 def get_apps(apps: list[list[str]] | None = None) -> Dict[str, str]:
     """
     Get all app directories using APPS_DIR from settings.
-    
+
     Args:
         apps: Optional list of app paths to filter
-        
+
     Returns:
         Dictionary mapping app names to their paths
     """
     apps_dir = settings.APPS_DIR
-    
+
     # If APPS_DIR is relative, make it absolute from project root
     if not os.path.isabs(apps_dir):
         # Get project root (assuming this file is in core/utils/utils.py)
         current_dir = os.path.dirname(os.path.abspath(__file__))
         project_root = os.path.dirname(os.path.dirname(current_dir))
         apps_dir = os.path.join(project_root, apps_dir)
-    
+
     if apps is None:
         apps_dirs = [apps_dir]
     else:
@@ -31,7 +31,8 @@ def get_apps(apps: list[list[str]] | None = None) -> Dict[str, str]:
         name: os.path.join(apps_dir_path, name)
         for apps_dir_path in apps_dirs
         for name in os.listdir(apps_dir_path)
-        if os.path.isdir(os.path.join(apps_dir_path, name)) and not name.startswith("__")
+        if os.path.isdir(os.path.join(apps_dir_path, name))
+        and not name.startswith("__")
     }
 
 
