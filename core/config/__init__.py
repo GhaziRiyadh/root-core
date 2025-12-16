@@ -1,4 +1,7 @@
+import cmd
 from datetime import datetime
+import os
+from re import L
 from typing import List
 from zoneinfo import ZoneInfo
 from enum import Enum
@@ -47,7 +50,7 @@ class Settings(BaseSettings):
     LOG_MODEL: str = "core.apps.base.models.log"
 
     # apps dir
-    APPS_DIR: str = "apps"
+    APPS_DIR: str = "src/apps"
 
     # Security Class
     SECURITY_CLASS: str = "core.apps.auth.utils.security.DefaultSecurity"
@@ -55,6 +58,16 @@ class Settings(BaseSettings):
     # actions
 
     ACTIONS: List[PermissionAction] = [action for action in PermissionAction]
+
+    @property
+    def app_dir(self) -> List[str]:
+        """Get the applications directory."""
+        return [os.path.join(*dir.strip().split("/")) for dir in self.APPS_DIR.split(",")]
+
+    @property
+    def project_root(self) -> str:
+        """Get the project root directory."""
+        return os.getcwd()
 
     def get_now(self):
         """Get the current time in the configured time zone."""

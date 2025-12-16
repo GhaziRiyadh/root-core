@@ -8,7 +8,7 @@ from sqlmodel import Column, DateTime
 from datetime import datetime
 
 from core.apps.auth.models.user import User
-from core.apps.auth.utils.utils import auth
+from core.utils.auth import auth
 from core.config import settings
 
 

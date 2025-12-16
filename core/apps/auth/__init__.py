@@ -1,4 +1,4 @@
-"""Auth app."""
+# """Auth app."""
 
 from .routers.user_router import router as user_router
 from .routers.role_router import router as role_router
@@ -25,7 +25,7 @@ routers = [
 ]
 
 
-"""Auth models."""
+# """Auth models."""
 
 # Import all models to ensure they're registered with SQLAlchemy
 from .models.user import User

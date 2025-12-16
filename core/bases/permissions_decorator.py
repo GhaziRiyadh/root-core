@@ -90,7 +90,7 @@ def require_permissions(
                     )
             return result
 
-        from ...auth.utils.utils import auth
+        from core.utils.auth import auth
 
         if is_coro:
 

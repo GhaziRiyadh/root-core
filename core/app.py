@@ -11,9 +11,7 @@ from pathlib import Path
 from core.config import settings
 from core.database import get_session
 from core.response.handlers import global_exception_handler
-from core.apps.auth.utils.utils import initia_auth
-from core import handle_routers
-
+from core.utils.auth import initia_auth
 
 class CoreApp:
     def __init__(
@@ -109,9 +107,6 @@ class CoreApp:
         async def health_check():
             """Health check endpoint."""
             return {"status": "healthy", "message": "Service is running normally"}
-
-        # Include app routers
-        handle_routers(self.app)
 
     def _configure_static_files(self):
         if self.static_files_mount and self.static_files_dir:

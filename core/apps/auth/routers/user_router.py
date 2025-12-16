@@ -9,7 +9,7 @@ from ..services.user_service import UserService
 from ..repositories.user_repository import UserRepository
 from ..schemas.user import UserCreate, UserUpdate
 from core.response import handlers
-from ..utils.utils import (
+from core.utils.auth import (
     get_current_active_user,
 )
 from core.config import PermissionAction

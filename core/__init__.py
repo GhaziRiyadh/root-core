@@ -1,7 +1,11 @@
 from importlib import import_module
 import pkgutil
 import inspect
-from typing import List, Type
+from typing import TYPE_CHECKING, List, Type
+from fastapi import FastAPI, APIRouter
+
+if TYPE_CHECKING:
+    from core.bases.base_router import BaseRouter
 
 """Core module."""
 
@@ -55,4 +59,12 @@ def get_all_models() -> List[Type]:
     return list(_MODELS_CACHE)
 
 
-__all__ = ["get_all_models"]
+def handle_router(app: FastAPI, router: "BaseRouter"):
+    route = router.get_router()
+    if isinstance(route, APIRouter):
+        app.include_router(route)
+    elif isinstance(route, FastAPI):
+        app.mount(router.prefix, route)
+
+
+__all__ = ["get_all_models", "handle_router"]

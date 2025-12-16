@@ -11,7 +11,7 @@ from sqlalchemy.orm import selectinload
 from pathlib import Path
 import mimetypes
 
-from core.apps.auth.utils.utils import auth
+from core.utils.auth import auth
 
 
 class ArchiveRepository(BaseRepository[Archive]):

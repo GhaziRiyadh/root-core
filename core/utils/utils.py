@@ -3,6 +3,12 @@ from typing import Dict, List
 from core.config import settings
 
 
+def get_all_apps() -> List[str]:
+    """
+    Return a list of all app names discovered under the `core.apps` package.
+    """
+    return [name for name in get_apps().keys()]
+
 def get_apps(apps: list[list[str]] | None = None) -> Dict[str, str]:
     """
     Get all app directories using APPS_DIR from settings.
@@ -13,19 +19,20 @@ def get_apps(apps: list[list[str]] | None = None) -> Dict[str, str]:
     Returns:
         Dictionary mapping app names to their paths
     """
-    apps_dir = settings.APPS_DIR
+    apps_dir = settings.app_dir
 
     # If APPS_DIR is relative, make it absolute from project root
-    if not os.path.isabs(apps_dir):
-        # Get project root (assuming this file is in core/utils/utils.py)
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(os.path.dirname(current_dir))
-        apps_dir = os.path.join(project_root, apps_dir)
+    for app_dir in apps_dir:
+        if not os.path.isabs(app_dir):
+            # Get project root (assuming this file is in core/utils/utils.py)
+            # current_dir = os.path.dirname(os.path.abspath(__file__))
+            # project_root = os.path.dirname(os.path.dirname(current_dir))
+            apps_dir[apps_dir.index(app_dir)] = os.path.join(settings.project_root, app_dir)
 
     if apps is None:
-        apps_dirs = [apps_dir]
+        apps_dirs = apps_dir
     else:
-        apps_dirs = [os.path.join(apps_dir, *app) for app in apps]
+        apps_dirs = [os.path.join(*app) for app in apps]
 
     return {
         name: os.path.join(apps_dir_path, name)

@@ -5,8 +5,8 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
 from core.apps.auth.routers.user_router import get_user_repository
-from core.apps.auth.utils.utils import Token, authenticate_user, create_access_token
-from core.apps.auth.utils.utils import get_password_hash
+from core.utils.auth import authenticate_user, create_access_token, get_password_hash
+from core.bases.security import Token
 from core.bases.base_router import BaseRouter
 from core.config import PermissionAction
 from core.config import settings
