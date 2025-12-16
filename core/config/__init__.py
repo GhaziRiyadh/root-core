@@ -53,10 +53,9 @@ class Settings(BaseSettings):
     APPS_DIR: str = "src/apps"
 
     # Security Class
-    SECURITY_CLASS: str = "core.apps.auth.utils.security.DefaultSecurity"
+    SECURITY_CLASS: str = "core.bases.security.DefaultSecurity"
 
     # actions
-
     ACTIONS: List[PermissionAction] = [action for action in PermissionAction]
 
     @property

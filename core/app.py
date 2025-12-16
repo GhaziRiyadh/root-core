@@ -74,9 +74,9 @@ class CoreApp:
     def _configure_middleware(self):
         if self.enable_babel:
             configs = BabelConfigs(
-                ROOT_DIR=os.path.dirname(__file__),
+                ROOT_DIR=settings.project_root,
                 BABEL_DEFAULT_LOCALE="ar",
-                BABEL_TRANSLATION_DIRECTORY="locales",
+                BABEL_TRANSLATION_DIRECTORY=os.path.join(settings.project_root, "locales"),
             )
             self.app.add_middleware(BabelMiddleware, babel_configs=configs)
 
