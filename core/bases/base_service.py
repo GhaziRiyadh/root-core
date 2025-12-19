@@ -7,6 +7,7 @@ from core import exceptions
 from core.response.schemas import PaginatedResponse
 from core.schemas.fields import DynamicFormConfig, ModelDefinition
 from core.services.field_service import FieldService
+from core.bases.serializer import BaseSerializer
 
 T = TypeVar("T")
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
@@ -25,11 +26,16 @@ class BaseService(Generic[T]):
 
     def __init__(self, repository: BaseRepository) -> None:
         self.repository = repository
+        self.serializer_class: Optional[Type[BaseSerializer]] = None
 
     async def _return_one_data(self, data: Any) -> Any:
+        if self.serializer_class:
+            return self.serializer_class(data).data
         return data
 
     async def _return_multi_data(self, data: List) -> Any:
+        if self.serializer_class:
+            return self.serializer_class(data, many=True).data
         return [await self._return_one_data(item) for item in data]
 
     async def get_all(self, include_deleted: bool = False, **filters) -> Dict[str, Any]:
@@ -134,7 +140,18 @@ class BaseService(Generic[T]):
 
             # Validate business rules before creation
             await self._validate_create(create_data)
-            item = await self.repository.create(create_data)
+
+            if self.serializer_class:
+                # Use serializer for validation and creation
+                serializer = self.serializer_class(data=create_data)
+                # Ensure validation passes (raises exception if fails)
+                await serializer.is_valid(raise_exception=True)
+                # Calls serializer.save(), which calls self.create() method inside serializer
+                # we pass 'service=self' so it can access the repository
+                item = await serializer.save(service=self)
+            else:
+                # Legacy / Default behavior
+                item = await self.repository.create(create_data)
 
             return {
                 "data": await self._return_one_data(item),
@@ -175,9 +192,17 @@ class BaseService(Generic[T]):
             # Validate business rules before update
             await self._validate_update(item_id, update_data, existing_item)
 
-            updated_item = await self.repository.update(
-                item_id=item_id, obj_in=update_data
-            )
+            if self.serializer_class:
+                # Use serializer for validation and update
+                serializer = self.serializer_class(
+                    instance=existing_item, data=update_data, partial=True
+                )
+                await serializer.is_valid(raise_exception=True)
+                updated_item = await serializer.save(service=self)
+            else:
+                updated_item = await self.repository.update(
+                    item_id=item_id, obj_in=update_data
+                )
 
             if not updated_item:
                 raise exceptions.NotFoundException(

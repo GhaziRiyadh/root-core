@@ -7,6 +7,7 @@ from core.apps.auth.schemas.user import UserCreate
 from core.bases.base_service import BaseService
 from core.apps.auth.repositories.user_repository import UserRepository
 from core.apps.auth.models.user import User
+from core.apps.auth.serializers import UserSerializer
 from core.schemas.fields import (
     DynamicFormConfig,
     FieldType,
@@ -23,43 +24,11 @@ class UserService(BaseService[User]):
 
     def __init__(self, repository: UserRepository):
         super().__init__(repository)
+        self.serializer_class = UserSerializer
 
-    async def _return_multi_data(self, data: List[User]):  # type:ignore
-        dict_data = [
-            {
-                **user.model_dump(exclude={"password"}),
-                "roles": [role.id for role in user.roles],
-                "groups": [group.id for group in user.groups],
-                "permissions": [perm.id for perm in user.permissions],
-            }
-            for user in data
-        ]
-        return await super()._return_multi_data(dict_data)  # type:ignore
+    # _return_multi_data removed as serializer now handles list serialization
 
-    async def create(self, obj_in: UserCreate, **additional_data) -> Dict[str, Any]:
-        from ..routers.role_router import get_role_repository
-
-        role_repo = get_role_repository()
-        async with role_repo.get_session() as session:
-            role_res = await session.exec(
-                role_repo._build_select_stmt().where(
-                    role_repo.model.id.in_(obj_in.roles),  # type:ignore
-                )
-            )
-            obj_in.roles = role_res.all()  # type:ignore
-
-        from ..routers.group_router import get_group_repository
-
-        group_repo = get_group_repository()
-        async with group_repo.get_session() as session:
-            res = await session.exec(
-                group_repo._build_select_stmt().where(
-                    group_repo.model.id.in_(obj_in.groups),  # type:ignore
-                )
-            )
-            obj_in.groups = res.all()  # type:ignore
-
-        return await super().create(obj_in, groups=obj_in.groups, roles=obj_in.roles)
+    # create method removed as UserSerializer now handles M2M creation logic
 
     async def _validate_create(self, create_data: Dict[str, Any]) -> None:
         """Validate data before creation."""
