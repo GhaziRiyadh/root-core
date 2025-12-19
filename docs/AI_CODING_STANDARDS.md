@@ -249,21 +249,39 @@ return success_response(data=serializer.data)
 
 The serializer also handles input validation and saving.
 
+#### 1. Validation Logic
+
+The serializer leverages Pydantic for validation. `is_valid()` captures `ValidationError` and formats them into a legacy-friendly list of errors.
+
+#### 2. Field-Specific Save Hooks
+
+Instead of overriding the entire `create` or `update` method, you can define **Field-Specific Save Hooks**. These are methods named `save_<field_name>` that are automatically detected and executed after the main object is persisted.
+
+Use this for handling Many-to-Many relationships or other side effects.
+
 ```python
-# 1. Validation Logic
 class UserSerializer(BaseSerializer):
     class Meta:
         model = User
         
-    def create(self, validated_data):
-        # Override for custom logic
-        validated_data['username'] = validated_data['email'].split('@')[0]
-        # Must call repo if you override
-        return await self.instance.service.repository.create(validated_data) # or similar
-
-# 2. Service Usage
-# By just setting serializer_class = UserSerializer, create/update now use it:
-# await service.create({"email": "foo@bar.com"}) 
-# -> Validates using Pydantic model
-# -> Calls serializer.save() -> serializer.create()
+    # Validation is automatic based on Meta.model
+    
+    # Custom Hook for 'roles' field
+    async def save_roles(self, instance, role_ids: list, **kwargs):
+        from ..routers.role_router import get_role_repository
+        repo = get_role_repository()
+        # ... logic to fetch roles and update instance ...
+        instance.roles = fetched_roles
+        # Ensure you handle session/commit if needed
+        
+    # Custom Hook for 'groups' field
+    async def save_groups(self, instance, group_ids: list, **kwargs):
+        # ... logic ...
 ```
+
+#### 3. Service Integration
+
+By setting `self.serializer_class = UserSerializer` in your Service:
+
+1. **Read**: All `get/list` returns are formatted by the serializer.
+2. **Write**: `create/update` calls use the serializer to validation input and run the save logic (including hooks).
