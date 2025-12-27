@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     LOG_MODEL: str = "core.apps.base.models.log"
 
     # apps dir
-    APPS_DIR: str = "src/apps"
+    APPS_DIR: str = "core/apps"
 
     # Security Class
     SECURITY_CLASS: str = "core.bases.security.DefaultSecurity"

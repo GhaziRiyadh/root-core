@@ -13,6 +13,8 @@ from core.config import settings
 from core.response import handlers
 from core.router import add_route
 from ..schemas.user import UserCreate
+from ..models.role import Role
+from sqlmodel import select
 
 resource_name = "auth"
 
@@ -35,8 +37,8 @@ class AuthRouter(BaseRouter):
         description="Login and get access token",
     )
     async def login_for_access_token(
-            self,
-            form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
+        self,
+        form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     ) -> Token:
         user = await authenticate_user(form_data.username, form_data.password)
         if not user:
@@ -101,6 +103,30 @@ class AuthRouter(BaseRouter):
                     detail="Incorrect username or password",
                     headers={"WWW-Authenticate": "Bearer"},
                 )
+
+            # Assign default role "عميل"
+            async with user_repo.get_session() as session:
+                # Check if role exists
+                stmt = select(Role).where(Role.name == "عميل")
+                result = await session.exec(stmt)
+                role = result.first()
+
+                if not role:
+                    # Create role if not exists
+                    role = Role(
+                        name="عميل", description="Default role for registration"
+                    )
+                    session.add(role)
+                    await session.commit()
+                    await session.refresh(role)
+
+                # Re-attach user to current session
+                session.add(new_user)
+
+                # Assign role via userRepository method
+                await user_repo.update_roles(session, new_user, [role.id])
+                await session.commit()
+
             access_token_expires = timedelta(
                 minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
             )
@@ -112,7 +138,7 @@ class AuthRouter(BaseRouter):
                 message="تم تسجيل الدخول بنجاح",
             )
         except Exception as e:
-            print(e)
+            print(f"Registration error: {e}")
             return handlers.error_response(error_code="ERROR", message=str(e))
 
 
