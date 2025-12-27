@@ -1,6 +1,7 @@
 import cmd
 from datetime import datetime
 import os
+import importlib
 from re import L
 from typing import List
 from zoneinfo import ZoneInfo
@@ -82,4 +83,20 @@ class Settings(BaseSettings):
         return datetime.now(tz)
 
 
-settings = Settings()
+def get_settings() -> Settings:
+    """Load settings class dynamically from environment variable."""
+    settings_path = os.getenv("CORE_SETTINGS_CLASS")
+    if not settings_path:
+        return Settings()
+
+    try:
+        module_path, class_name = settings_path.rsplit(".", 1)
+        module = importlib.import_module(module_path)
+        settings_class = getattr(module, class_name)
+        return settings_class()
+    except (ImportError, AttributeError, ValueError) as e:
+        print(f"Warning: Could not load custom settings class '{settings_path}': {e}")
+        return Settings()
+
+
+settings = get_settings()
