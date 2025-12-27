@@ -23,6 +23,15 @@ class GeneratePermissionsCommand(BaseCommand):
 
                 resources[app_name].append(resources_module.resource_name)
 
+        for app in settings.core_apps:
+            routers = importlib.import_module(f"core.apps.{app}.routers")
+            for router in routers.__dict__.values():
+                if hasattr(router, "resource_name"):
+                    if app not in resources:
+                        resources[app] = []
+                    resources[app].append(router.resource_name)
+                
+
         print(f"🔍 Found routers: {resources}")
 
         for app_name, app_resources in resources.items():

@@ -58,10 +58,18 @@ class Settings(BaseSettings):
     # actions
     ACTIONS: List[PermissionAction] = [action for action in PermissionAction]
 
+    CORE_APPS: str = "archive,base,auth"
+
+    @property
+    def core_apps(self) -> List[str]:
+        return [app for app in self.CORE_APPS.split(",")]
+
     @property
     def app_dir(self) -> List[str]:
         """Get the applications directory."""
-        return [os.path.join(*dir.strip().split("/")) for dir in self.APPS_DIR.split(",")]
+        return [
+            os.path.join(*dir.strip().split("/")) for dir in self.APPS_DIR.split(",")
+        ]
 
     @property
     def project_root(self) -> str:

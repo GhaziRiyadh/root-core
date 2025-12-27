@@ -486,7 +486,7 @@ class BaseService(Generic[T]):
             import importlib
             import enum as py_enum
 
-            path = f"src.apps.{app_name}.utils.enums"
+            path = f"core.apps.{app_name}.utils.enums"
             enums_module = importlib.import_module(path)
             enum_cls = getattr(enums_module, enum_class, None)
             print("Importing enum class", enum_cls)

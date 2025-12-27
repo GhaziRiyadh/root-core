@@ -238,10 +238,10 @@ class DefaultSecurity(BaseSecurity):
             else []
         )
 
-        from ..models.permission import Permission
-        from ..models.role import Role
-        from ..models.user import User
-        from ..models.group import Group
+        from core.apps.auth.models.permission import Permission
+        from core.apps.auth.models.role import Role
+        from core.apps.auth.models.user import User
+        from core.apps.auth.models.group import Group
 
         query = (
             select(Permission)

@@ -23,7 +23,7 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
         yield session
 
 
-@contextmanager
+# @contextmanager
 def get_local_session() -> Generator[Session, None, None]:
     """Sync context manager that yields a sync Session."""
     with Session(local_engine) as session:

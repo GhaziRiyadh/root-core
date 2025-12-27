@@ -10,8 +10,6 @@ from .userpermission import UserPermission
 from .userrole import UserRole
 from core.database import BaseModel
 
-
-# from src.apps.passenger.models.passenger import Passenger
 from .group import Group
 
 if TYPE_CHECKING:

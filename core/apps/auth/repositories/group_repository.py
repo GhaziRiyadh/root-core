@@ -1,10 +1,10 @@
 """Group repository."""
 
 from typing import List
-from ..routers.permission_router import get_permission_repository
-from ..routers.role_router import get_role_repository
+from core.apps.auth.routers.permission_router import get_permission_repository
+from core.apps.auth.routers.role_router import get_role_repository
 from core.bases.base_repository import BaseRepository
-from ..models.group import Group
+from core.apps.auth.models.group import Group
 from sqlalchemy.orm import selectinload
 from sqlmodel.ext.asyncio.session import AsyncSession
 
